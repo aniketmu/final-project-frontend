@@ -15,7 +15,7 @@ function Header() {
         </a>
         <div className="hidden lg:flex space-x-6 text-white">
           <Link to="/signin">Sign-In</Link>
-          <Link to="/singup">Sign-Up</Link>
+          <Link to="/signup">Sign-Up</Link>
           <Link to="/dashboard">Dashboard</Link>
         </div>
         <div className="flex space-x-4">
