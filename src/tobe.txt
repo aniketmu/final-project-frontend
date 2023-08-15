@@ -1,0 +1,69 @@
+before cookie logic 
+
+app.post("/signin", async (req, res) => {
+  User.findOne({ email: req.body.email })
+      .then((user) => {
+          if (!user) {
+              return res.status(404).send({ message: "User not found" });
+          }
+
+
+          bcrypt.compare(req.body.password, user.password)
+              .then((passwordCheck) => {
+                  if (!passwordCheck) {
+                      return res.status(401).send({ message: "Password does not match" });
+                  }
+
+                  const token = jwt.sign(
+                      {
+                          userId: user._id,
+                          userEmail: user.email,
+                      },
+                      'RANDOM-TOKEN',
+                      {
+                          expiresIn: "24h",
+                      }
+                  );
+
+                  res.status(200).send({ message: "Login Successful", userId: user._id, email: user.email, name: user.name, token });
+              })
+              .catch(() => {
+                  res.status(401).send({ message: "Password does not match" })
+              });
+      })
+      .catch((error) => {
+          res.status(500).send({ message: "An error occurred", error });
+      });
+});
+
+
+useEffect(() => {
+    const storedUserId = Cookies.get('userId');
+    const storedUserEmail = Cookies.get('userEmail');
+    const storedUserName = Cookies.get('userName');
+
+    // Update Redux state using the retrieved data
+    dispatch(changeUserId(storedUserId));
+    dispatch(changeUserEmail(storedUserEmail));
+    dispatch(changeUserName(storedUserName));
+
+    }, [])
+
+  useEffect(() => {
+      (async () => {
+        const response = await fetch("http://localhost:8000/channel", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({userId: user.id})
+        })
+
+        if(response.status === 404){
+          return;
+        }else if(response.status === 200){
+          const data = await response.json()
+          dispatch(setChannels(data.channel))
+        }
+      })();
+    }, []);
