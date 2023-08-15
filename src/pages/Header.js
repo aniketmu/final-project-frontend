@@ -13,13 +13,10 @@ function Header() {
             alt=""
           />
         </a>
-        <div className="hidden lg:flex space-x-6 text-white">
+        <div className="flex space-x-6 text-white">
           <Link to="/signin">Sign-In</Link>
           <Link to="/signup">Sign-Up</Link>
           <Link to="/dashboard">Dashboard</Link>
-        </div>
-        <div className="flex space-x-4">
-          <MenuIcon className="h-9 text-white cursor-pointer lg:hidden" />
         </div>
       </header>
       <div className="flex-grow overflow-auto bg-[#6CB4EE]">
