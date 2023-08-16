@@ -26,4 +26,4 @@ $ npm start
 
 ````
 ### Deployment 
-The app has been deployed on [Render.com](https://dashboard.render.com/web/srv-cjdlfpoq339s73c0begg/logs)
+The app has been deployed on [Netlify.com](https://64dbc23d9ab0da13ddb90c8f--stalwart-begonia-d763e3.netlify.app/)
