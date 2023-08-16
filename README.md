@@ -12,8 +12,8 @@ A list of technologies used within the project:
 
 * [HTML](https://html.com/)
 * [Tailwind CSS](https://tailwindcss.com/)
-* [React.JS]([https://nodejs.org/en](https://react.dev/))
-* [Redux]([https://expressjs.com/](https://redux.js.org/))
+* [React.JS](https://nodejs.org/en)
+* [Redux](https://redux.js.org/)
 
 ## Installation
 
